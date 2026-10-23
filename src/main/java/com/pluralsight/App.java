@@ -32,6 +32,7 @@ public class App {
         switch (command){
             case 1-> listVehicles(vehicles);
             case 2-> searchByModel(input, vehicles);
+            case 3-> searchByPriceRange(input, vehicles);
             case 4-> searchByColor(input, vehicles);
             case 5-> addAvehicle(input, vehicles);
             case 6-> System.out.println("Goodbye!");
@@ -78,12 +79,18 @@ public class App {
     }
 
     public static void searchByPriceRange(Scanner input, Vehicle[] vehicles){
-        System.out.print("Enter Make/Model: ");
-        String makeModel = input.nextLine();
+        System.out.print("Enter the minimum price range: ");
+        double minimumRange = input.nextDouble();
+        input.nextLine();
+
+        System.out.print("Enter the maximum price range: ");
+        double maximumRange = input.nextDouble();
 
         for(Vehicle vehicle : vehicles){
-            if(vehicle != null && vehicle.getMakeModel().equalsIgnoreCase(makeModel)){
-                System.out.println(vehicle);
+            if(vehicle != null) {
+                if (vehicle.getPrice() >= minimumRange && vehicle.getPrice() <= maximumRange) {
+                    System.out.println(vehicle);
+                }
             }
         }
 
@@ -91,10 +98,10 @@ public class App {
 
     public static void searchByColor(Scanner input, Vehicle[] vehicles){
         System.out.print("Enter Vehicle Color: ");
-        String makeModel = input.nextLine();
+        String color = input.nextLine();
 
         for(Vehicle vehicle : vehicles){
-            if(vehicle != null && vehicle.getColor().equalsIgnoreCase(makeModel)){
+            if(vehicle != null && vehicle.getColor().equalsIgnoreCase(color)){
                 System.out.println(vehicle);
             }
         }
