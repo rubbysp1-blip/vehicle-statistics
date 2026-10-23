@@ -26,19 +26,19 @@ public class App {
             i++;
         }
 
-        System.out.println(Arrays.toString(vehicles));
+        //System.out.println(Arrays.toString(vehicles));
 //        System.out.println(totalVehicles);
 //
-//        int command = printMenu(input);
-//        //System.out.println(command);
-//        switch (command){
-//            case 1: listVehicles(vehicles);
-//            break;
-//            case 2: searchByModel(input, vehicles);
-//            break;
-//            case 5: addAvehicle(input);
-//            break;
-//        }
+        int command = printMenu(input);
+        //System.out.println(command);
+        switch (command){
+            case 1: listVehicles(vehicles);
+            break;
+            case 2: searchByModel(input, vehicles);
+            break;
+            case 5: addAvehicle(input);
+            break;
+        }
 
         //System.out.println(listVehicles(vehicles));
 
@@ -72,11 +72,7 @@ public class App {
 
         for(Vehicle vehicle : v){
             if(v[i] != null){
-                System.out.println("-------------------------\n" + vehicle.getVehicleId());
-                System.out.println(vehicle.getMakeModel());
-                System.out.println(vehicle.getColor());
-                System.out.println(vehicle.getOdometerReading());
-                System.out.println(vehicle.getPrice());
+                System.out.println(vehicle.toString());
             }
             i++;
         }
