@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class App {
@@ -25,11 +26,29 @@ public class App {
             i++;
         }
 
-        System.out.println(totalVehicles);
+        System.out.println(Arrays.toString(vehicles));
+//        System.out.println(totalVehicles);
+//
+//        int command = printMenu(input);
+//        //System.out.println(command);
+//        switch (command){
+//            case 1: listVehicles(vehicles);
+//            break;
+//            case 2: searchByModel(input, vehicles);
+//            break;
+//            case 5: addAvehicle(input);
+//            break;
+//        }
 
-        int menuDecision = printMenu(input);
+        //System.out.println(listVehicles(vehicles));
 
-        System.out.println(menuDecision);
+//        Vehicle newVehicels = addAvehicle(input);
+//        Vehicle[] newVehicel = {newVehicels};
+//
+//        for(Vehicle vehicleInput : newVehicel){
+//            System.out.println(vehicleInput.getColor());
+//
+//        }
     }
 
     public static int printMenu(Scanner input){
@@ -43,7 +62,67 @@ public class App {
                 6 - Quit
                 Enter your command:\s""");
 
-        int menuInput = input.nextInt();
-        return menuInput;
+        return input.nextInt();
+    }
+
+    public static void listVehicles (Vehicle[] v){
+        int i = 0;
+        //int totalVehicles = 0;
+        //Vehicle v = {vehicles};
+
+        for(Vehicle vehicle : v){
+            if(v[i] != null){
+                System.out.println("-------------------------\n" + vehicle.getVehicleId());
+                System.out.println(vehicle.getMakeModel());
+                System.out.println(vehicle.getColor());
+                System.out.println(vehicle.getOdometerReading());
+                System.out.println(vehicle.getPrice());
+            }
+            i++;
+        }
+        //return totalVehicles;
+    }
+
+    public static int searchByModel(Scanner input, Vehicle[] vehicles){
+        System.out.println("Enter Make/Model: ");
+        String makeModel = input.nextLine();
+
+        for(Vehicle vehicle : vehicles){
+            if(makeModel.equals(vehicle.getMakeModel())){
+                System.out.println(vehicle.getVehicleId());
+                System.out.println(vehicle.getMakeModel());
+                System.out.println(vehicle.getColor());
+                System.out.println(vehicle.getOdometerReading());
+                System.out.println(vehicle.getPrice());
+            }
+        }
+        //System.out.println(makeModel);
+        return 1;
+
+    }
+
+    public static Vehicle addAvehicle(Scanner input){
+        Vehicle[] vehicle = new Vehicle[1];
+
+        System.out.print("Vehicle ID: ");
+        long vechicleId = input.nextLong();
+        input.nextLine();
+
+        System.out.print("Make/Model: ");
+        String makeModel = input.nextLine();
+        //input.nextLine();
+
+        System.out.print("Color Of Vehicle: ");
+        String color = input.nextLine();
+        //input.nextLine();
+
+        System.out.print("Odometer: ");
+        int odometerReading = input.nextInt();
+
+        System.out.print("Price: ");
+        double price = input.nextDouble();
+
+        vehicle[0] = new Vehicle(vechicleId, makeModel, color, odometerReading, price);
+        return vehicle[0];
     }
 }

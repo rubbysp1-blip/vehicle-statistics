@@ -62,4 +62,15 @@ public class Vehicle {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "Vehicle Information\n" +
+                "------------------------\n" +
+                "Vehicle ID: " + vehicleId + "\n" +
+                "Make/Model: " + makeModel + "\n" +
+                "Color: " + color + "\n" +
+                "Odometer Reading: " + odometerReading + " miles\n" +
+                "Price: $" + String.format("%.2f", price);
+    }
 }
