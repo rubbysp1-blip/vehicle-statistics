@@ -30,6 +30,7 @@ public class App {
 //        System.out.println(totalVehicles);
 //
         int command = printMenu(input);
+        input.nextLine();
         //System.out.println(command);
         switch (command){
             case 1: listVehicles(vehicles);
@@ -79,21 +80,23 @@ public class App {
         //return totalVehicles;
     }
 
-    public static int searchByModel(Scanner input, Vehicle[] vehicles){
+    public static void searchByModel(Scanner input, Vehicle[] vehicles){
         System.out.println("Enter Make/Model: ");
         String makeModel = input.nextLine();
 
+//        makeModel.equals(vehicle.getMakeModel())
         for(Vehicle vehicle : vehicles){
-            if(makeModel.equals(vehicle.getMakeModel())){
-                System.out.println(vehicle.getVehicleId());
-                System.out.println(vehicle.getMakeModel());
-                System.out.println(vehicle.getColor());
-                System.out.println(vehicle.getOdometerReading());
-                System.out.println(vehicle.getPrice());
+            if(vehicle != null && vehicle.getMakeModel().equalsIgnoreCase(makeModel)){
+                System.out.println(vehicle);
+//                System.out.println(vehicle.getVehicleId());
+//                System.out.println(vehicle.getMakeModel());
+//                System.out.println(vehicle.getColor());
+//                System.out.println(vehicle.getOdometerReading());
+//                System.out.println(vehicle.getPrice());
             }
         }
         //System.out.println(makeModel);
-        return 1;
+        //return 1;
 
     }
 
