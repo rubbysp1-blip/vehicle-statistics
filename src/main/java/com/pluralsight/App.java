@@ -26,30 +26,18 @@ public class App {
             i++;
         }
 
-        //System.out.println(Arrays.toString(vehicles));
-//        System.out.println(totalVehicles);
-//
         int command = printMenu(input);
         input.nextLine();
-        //System.out.println(command);
+
         switch (command){
-            case 1: listVehicles(vehicles);
-            break;
-            case 2: searchByModel(input, vehicles);
-            break;
-            case 5: addAvehicle(input);
-            break;
+            case 1-> listVehicles(vehicles);
+            case 2-> searchByModel(input, vehicles);
+            case 4-> searchByColor(input, vehicles);
+            case 5-> addAvehicle(input, vehicles);
+            case 6-> System.out.println("Goodbye!");
+            default -> System.out.println("Invalid Input!");
         }
 
-        //System.out.println(listVehicles(vehicles));
-
-//        Vehicle newVehicels = addAvehicle(input);
-//        Vehicle[] newVehicel = {newVehicels};
-//
-//        for(Vehicle vehicleInput : newVehicel){
-//            System.out.println(vehicleInput.getColor());
-//
-//        }
     }
 
     public static int printMenu(Scanner input){
@@ -68,8 +56,6 @@ public class App {
 
     public static void listVehicles (Vehicle[] v){
         int i = 0;
-        //int totalVehicles = 0;
-        //Vehicle v = {vehicles};
 
         for(Vehicle vehicle : v){
             if(v[i] != null){
@@ -77,31 +63,46 @@ public class App {
             }
             i++;
         }
-        //return totalVehicles;
     }
 
     public static void searchByModel(Scanner input, Vehicle[] vehicles){
-        System.out.println("Enter Make/Model: ");
+        System.out.print("Enter Make/Model: ");
         String makeModel = input.nextLine();
 
-//        makeModel.equals(vehicle.getMakeModel())
         for(Vehicle vehicle : vehicles){
             if(vehicle != null && vehicle.getMakeModel().equalsIgnoreCase(makeModel)){
                 System.out.println(vehicle);
-//                System.out.println(vehicle.getVehicleId());
-//                System.out.println(vehicle.getMakeModel());
-//                System.out.println(vehicle.getColor());
-//                System.out.println(vehicle.getOdometerReading());
-//                System.out.println(vehicle.getPrice());
             }
         }
-        //System.out.println(makeModel);
-        //return 1;
 
     }
 
-    public static Vehicle addAvehicle(Scanner input){
-        Vehicle[] vehicle = new Vehicle[1];
+    public static void searchByPriceRange(Scanner input, Vehicle[] vehicles){
+        System.out.print("Enter Make/Model: ");
+        String makeModel = input.nextLine();
+
+        for(Vehicle vehicle : vehicles){
+            if(vehicle != null && vehicle.getMakeModel().equalsIgnoreCase(makeModel)){
+                System.out.println(vehicle);
+            }
+        }
+
+    }
+
+    public static void searchByColor(Scanner input, Vehicle[] vehicles){
+        System.out.print("Enter Vehicle Color: ");
+        String makeModel = input.nextLine();
+
+        for(Vehicle vehicle : vehicles){
+            if(vehicle != null && vehicle.getColor().equalsIgnoreCase(makeModel)){
+                System.out.println(vehicle);
+            }
+        }
+
+    }
+
+    public static void addAvehicle(Scanner input, Vehicle[] vehicles) {
+        //Vehicle[] vehicle = new Vehicle[1];
 
         System.out.print("Vehicle ID: ");
         long vechicleId = input.nextLong();
@@ -109,11 +110,9 @@ public class App {
 
         System.out.print("Make/Model: ");
         String makeModel = input.nextLine();
-        //input.nextLine();
 
         System.out.print("Color Of Vehicle: ");
         String color = input.nextLine();
-        //input.nextLine();
 
         System.out.print("Odometer: ");
         int odometerReading = input.nextInt();
@@ -121,7 +120,15 @@ public class App {
         System.out.print("Price: ");
         double price = input.nextDouble();
 
-        vehicle[0] = new Vehicle(vechicleId, makeModel, color, odometerReading, price);
-        return vehicle[0];
+        int i = 0;
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle == null) {
+                vehicles[i] = new Vehicle(vechicleId, makeModel, color, odometerReading, price);
+            }
+        }
+
+
+        //vehicle[0] = new Vehicle(vechicleId, makeModel, color, odometerReading, price);
+        //return vehicle[0];
     }
 }
